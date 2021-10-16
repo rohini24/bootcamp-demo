@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bootcamp_demo/controller"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"net/http"
@@ -27,6 +28,9 @@ func setUpRouter() *gin.Engine {
 			"message": "Hey!",
 		})
 	})
+
+	userController := new(controller.UserController)
+	app.GET("/users", userController.Show)
 
 	return app
 }
